@@ -1,0 +1,92 @@
+/*
+Chef has obtained the results of a past Cook-Off. He wants to estimate the skill level of each contestant. The contestants can be classified with high probability (w.h.p.) based on the number of solved problems:
+
+A contestant that solved exactly 0 problems is a beginner.
+A contestant that solved exactly 1 problem is a junior developer.
+A contestant that solved exactly 2 problems is a middle developer.
+A contestant that solved exactly 3 problems is a senior developer.
+A contestant that solved exactly 4 problems is a hacker.
+A contestant that solved all five problems is Jeff Dean.
+Please help Chef to identify the programming level of each participant.
+
+Input
+The first line of the input contains a single integer N denoting the number of competitors.
+N lines follow. The i-th of these lines contains five space-separated integers Ai, 1, Ai, 2, Ai, 3, Ai, 4, Ai, 5. The j-th of these integers (1 = j = 5) is 1 if the i-th contestant solved the j-th problem and 0 otherwise.
+Output
+For each participant, print a single line containing one string denoting Chef's classification of that contestant — one of the strings "Beginner", "Junior Developer", "Middle Developer", "Senior Developer", "Hacker", "Jeff Dean" (without quotes).
+
+Constraints
+1 = N = 5000
+0 = Ai, j = 1 for each valid i, j
+Example
+Input:
+
+7
+0 0 0 0 0
+0 1 0 1 0
+0 0 1 0 0
+1 1 1 1 1
+0 1 1 1 0
+0 1 1 1 1
+1 1 1 1 0
+
+Output:
+
+Beginner
+Middle Developer
+Junior Developer
+Jeff Dean
+Senior Developer
+Hacker
+Hacker
+Explanation
+The first contestant has no solved problems, therefore he is a beginner. The second contestant solved 2 problems (the second and fourth problem), 
+therefore he has the skills of a middle developer. The third contestant solved 1 problem, therefore he's at the expected level of a junior developer. 
+The fourth contestant solved 5 problems — we can guess it was Jeff Dean. The fifth contestant solved 3 problems, so he is a senior developer. 
+And the last two contestants should be hackers because they solved exactly 4 problems each.
+*/#include <stdio.h>
+#include <math.h>
+int main(void) {
+	int n;
+	scanf("%d",&n);
+	int i,j;
+	int a[n];
+	for(i=1;i<=n;i++)
+	{
+		for(j=0;j<5;j++)
+		{
+			scanf("%d",&a[i]);
+		}
+		int t=0;
+		for(j=0;j<5;j++)
+		{
+			if(a[j]==1)
+			t++;
+		}
+		if(t==0)
+		{
+			printf("Beginner\n");
+		}
+		else if(t==1)
+		{
+			printf("Junior Developer\n");
+		}
+		else if(t==2)
+		{
+			printf("Middle Developer\n");
+		}
+		else if(t==3)
+		{
+			printf("Senior Developer\n");
+		}
+		else if(t==4)
+		{
+			printf("Hacker\n");
+		}
+		else if(t==5)
+		{
+			printf("Jeff Dean\n");
+		}
+	}
+	
+}
